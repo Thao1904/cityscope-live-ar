@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>CityScope Live AR</title>
+    <meta name="description" content="Place a CityScope planning table on your floor, add trees and benches by describing them, and swipe between personal, community and overview layers.">
+
+    <!-- 8th Wall engine (SLAM), XRExtras and Landing Page, same as the threejs-world-effects-example -->
+    <script src="https://cdn.jsdelivr.net/npm/@8thwall/engine-binary@1/dist/xr.js" async crossorigin="anonymous" data-preload-chunks="slam"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@8thwall/xrextras@1/dist/xrextras.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@8thwall/landing-page@1/dist/landing-page.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+    <link rel="stylesheet" href="src/index.css">
+  </head>
+  <body>
+    <canvas id="camerafeed"></canvas>
+
+    <!-- AR HUD -->
+    <div id="hud" hidden>
+      <div class="top">
+        <span class="pill" id="status"><i></i><span>Move your phone slowly to find the floor</span></span>
+        <div class="topbtns">
+          <button class="pill btn" id="scaleBtn" type="button">Size: Table</button>
+          <button class="pill btn" id="moveBtn" type="button">Move table</button>
+        </div>
+      </div>
+      <div id="labels"></div>
+      <div class="hint" id="hint"></div>
+      <div class="layername" id="layername"></div>
+      <div class="ideas" id="ideas"></div>
+      <div class="bottom">
+        <div class="layerbar" id="layerbar"><div class="track" id="track"></div></div>
+        <div class="sugs" id="sugs"></div>
+        <form class="ask" id="ask" autocomplete="off">
+          <input id="askin" placeholder="Tap the table, then say: add trees here" aria-label="Describe a change">
+          <button type="submit">Add</button>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
